@@ -23,7 +23,7 @@ const restaurant = {
   },
 
   order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu];
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 };
 
@@ -31,4 +31,28 @@ const arr = [2, 3, 4];
 const [x, y, z] = arr;
 console.log(x, y, z);
 
-const 
+const [first, second] = restaurant.categories;
+console.log(first, second);
+const [first1, , second1] = restaurant.categories;
+console.log(first1, second1);
+
+let [main, secondary] = restaurant.categories;
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
+
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
+
+const nested = [2, 4, [5, 6]];
+const [i, , j] = nested;
+console.log(i, j);
+
+const nested1 = [2, 4, [5, 6]];
+const [p, , [q, r]] = nested1;
+console.log(p, q, r);
+
+const [d, e, f] = [8, 9];
+console.log(d, e, f);
+
+const [g = 1, h = 1, k = 1] = [8, 9];
+console.log(g, h, k);
