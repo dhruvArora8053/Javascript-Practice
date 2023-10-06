@@ -49,7 +49,6 @@ const restaurant = {
   },
 };
 
-console.log(3 || "Jonas");
 
 
 
