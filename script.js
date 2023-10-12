@@ -49,28 +49,19 @@ const restaurant = {
   },
 };
 
-const arr = [1, 2, ...[3, 4]];
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-console.log(a, b, others);
+console.log(3 || "Jonas");
+console.log("" || "Jonas");
+console.log(true || 0);
 
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, otherFood);
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
 
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(sat, weekdays);
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
 
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-  console.log(sum);
-};
-add(23, 3);
-const x = [23, 5, 7];
-add(...x);
+restaurant.numGuests = 0;
+const guests3 = restaurant.numGuests || 10;
+console.log(guests3);
 
-restaurant.orderPizza("mushroom", "onion", "olives", "spinach");
+restaurant.orderPizza && restaurant.orderPizza("mushroom", "spinach");
