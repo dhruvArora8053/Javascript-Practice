@@ -42,30 +42,35 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
-const arr = [7, 8, 9];
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+const arr = [1, 2, ...[3, 4]];
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
 
-const newMenu = [...restaurant.mainMenu, "Gnocci"];
-console.log(newMenu);
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
 
-const mainMenuCopy = [...restaurant.mainMenu];
-const menu = [...restaurant.starterMenu, restaurant.mainMenu];
-console.log(menu);
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat, weekdays);
 
-const str = "jonas";
-const letters = [...str, "", "S."];
-console.log(letters);
-console.log(...str);
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+add(23, 3);
+const x = [23, 5, 7];
+add(...x);
 
-const ingredients = ["salt", "chilli", "garlic"];
-restaurant.orderPasta(...ingredients);
-
-const newRestaurant = { foundedIn: 1998, ...restaurant, founder: "Guiseppe" };
-console.log(newRestaurant);
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = "Ristorante Roma";
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+restaurant.orderPizza("mushroom", "onion", "olives", "spinach");
