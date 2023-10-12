@@ -2,23 +2,9 @@
 //Left:-
 //1. String method Practice
 
-const bookings = [];
-
-const createBooking = function (
-  flightNum,
-  numPassengers = 1,
-  price = 199 * numPassengers
-) {
-  const booking = {
-    flightNum,
-    numPassengers,
-    price,
-  };
-  console.log(booking);
-  bookings.push(booking);
-};
-
-createBooking("LH123");
-createBooking("LH123", 2, 800);
-createBooking("LH123", 2);
-createBooking("LH123", undefined, 1000);
+const arr = [23, 11, 64];
+console.log(arr[0]);
+console.log(arr.at(0));
+console.log(arr.slice(-1)[0]);
+console.log(arr.at(-1));
+console.log(arr.at(-2));
