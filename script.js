@@ -36,38 +36,36 @@ const restaurant = {
       `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr];
+console.log(newArr);
 
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+console.log(newMenu);
 
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+const mainMenuCopy = [...restaurant.mainMenu];
+const menu = [...restaurant.starterMenu, restaurant.mainMenu];
+console.log(menu);
 
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
-// {a, b} = obj;
-({ a, b } = obj);
-console.log(a, b);
+const str = "jonas";
+const letters = [...str, "", "S."];
+console.log(letters);
+console.log(...str);
 
-const {
-  fri: { open: o = 1, close: c = 1 },
-} = openingHours;
-console.log(o, c);
+const ingredients = ["salt", "chilli", "garlic"];
+restaurant.orderPasta(...ingredients);
 
-restaurant.orderDelivery({
-  time: "22:30",
-  address: "Via del Sole, 21",
-  mainIndex: 2,
-  starterIndex: 2,
-});
-
-restaurant.orderDelivery({ address: "Via del Sole, 21", starterIndex: 1 });
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: "Guiseppe" };
+console.log(newRestaurant);
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Ristorante Roma";
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
