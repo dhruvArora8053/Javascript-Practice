@@ -1,37 +1,61 @@
-function calcAge(birthYear) {
-  const age = 2037 - birthYear;
-  console.log(firstName);
-  return age;
+"use strict";
+
+// Hoisting with Variables:-
+console.log(me);
+// console.log(job);
+// console.log(year);
+
+var me = "Jonas";
+let job = "teacher";
+const year = 1991;
+
+console.log(addDecl(5, 5));
+// console.log(addExpr(5, 5));
+// console.log(addArrow(5, 5));
+
+function addDecl(a, b) {
+  return a + b;
 }
-const firstName = "Jonas";
-calcAge(1991);
 
-function calcAge1(birthYear) {
-  const age = 2037 - birthYear;
+const addExpr = function (a, b) {
+  return a + b;
+};
 
-  function printAge() {
-    let output = `${firstName1}, You are ${age}, born in ${birthYear}`;
-    console.log(output);
+const addArrow = (a, b) => a + b;
 
-    if (birthYear >= 1981 && birthYear <= 1996) {
-      var millenial = true;
-      const firstName1 = "Steven";
+// console.log(addExpr1(5, 5));
+// console.log(addArrow1(5, 5));
 
-      const str = `Oh, and you're a millenial, ${firstName1}`;
-      console.log(str);
+console.log(addExpr1);
+console.log(addArrow1);
 
-      function add(a, b) {
-        return a + b;
-      }
+var addExpr1 = function (a, b) {
+  return a + b;
+};
 
-      const output = "New output";
-    }
-    // console.log(str);
-    console.log(millenial);
-  }
+var addArrow1 = (a, b) => a + b;
 
-  printAge();
-  return age;
+//Pitfall of Hoisting
+console.log(numProducts);
+if (!numProducts) deleteShoppingCart();
+
+var numProducts = 10;
+
+function deleteShoppingCart() {
+  console.log("All products deleted!");
 }
-const firstName1 = "Jonas";
-calcAge1(1991);
+
+//1. just don't use var to declare variables
+//2. use const variable most of the time
+//3. use let if you really need to change that variable later
+//4. also inorder to write clean code you should declare your variables at the top of each scope
+//5. and finally always delare all your function first and use them only after declaration this even applies for function declarations
+
+var x = 1;
+let y = 2;
+const z = 3;
+
+console.log(window);
+console.log(x === window.x);
+console.log(y === window.y);
+console.log(z === window.z);
