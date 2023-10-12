@@ -1,80 +1,45 @@
 "use strict";
 
-const jonas = {
-  firstName: "Jonas",
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-  },
+let lastName = "Williams";
+let oldLastName = lastName;
+lastName = "Davis";
+console.log(lastName, oldLastName);
 
-  greet: () => console.log(`Hey ${this.firstName}`),
-};
-jonas.greet();
-console.log(this.firstName);
-
-var firstName = "Matilda";
-
-const jonas1 = {
-  firstName: "Jonas",
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-  },
-
-  greet: () => {
-    console.log(this);
-    console.log(this.firstName);
-    console.log(`Hey ${this.firstName}`);
-  },
-};
-jonas1.greet();
-
-const jonas2 = {
-  firstName: "Jonas",
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-
-    // const self = this;
-    // const isMillenial = function () {
-    //   console.log(this);
-    //   console.log(self);
-    // //   console.log(this.year >= 1981 && this.year <= 1996);
-    //   console.log(self.year >= 1981 && self.year <= 1996);
-    // };
-
-    const isMillenial = () => {
-      console.log(this);
-      console.log(self.year >= 1981 && self.year <= 1996);
-    };
-
-    isMillenial();
-  },
-
-  greet: () => {
-    console.log(this);
-    console.log(this.firstName);
-    console.log(`Hey ${this.firstName}`);
-  },
+const jessica = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
 };
 
-jonas2.calcAge();
-jonas2.greet();
+const marriedJessica = jessica;
+marriedJessica.lastName = "Davis";
+console.log("Before Marriage:", jessica);
+console.log("After Marriage:", marriedJessica);
 
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
+// marriedJessica = {};
+
+const jessica1 = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
 };
 
-addExpr(2, 5);
-addExpr(2, 5, 8, 5);
+const jessicaCopy = Object.assign({}, jessica1);
+jessicaCopy.lastName = "Davis";
+console.log(jessica1);
+console.log(jessicaCopy);
 
-const addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
+const jessica2 = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+  family: ["Alice", "Bob"],
 };
 
-addArrow(2, 5, 8);
+const jessicaCopy2 = Object.assign({}, jessica2);
+jessicaCopy2.lastName = "Davis";
+jessicaCopy2.family.push("Mary");
+jessicaCopy2.family.push("John");
+
+console.log("Before Marriage", jessica2);
+console.log("After Marriage", jessicaCopy2);
