@@ -53,27 +53,38 @@ const restaurant = {
   },
 };
 
-const properties = Object.keys(openingHours);
-console.log(properties);
+const orderSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Risotto",
+  "Pasta",
+  "Pizza",
+]);
 
-let openStr = `We are open on ${properties.length} days: `;
+console.log(orderSet);
+console.log(new Set("Jonass"));
+console.log(orderSet.size);
+console.log(orderSet.has("Pizza"));
+console.log(orderSet.has("Bread"));
 
-for (const day of Object.keys(openingHours)) {
-  //   console.log(day);
-}
+orderSet.add("Garlic Bread");
+orderSet.add("Garlic Bread");
+orderSet.delete("Risotto");
+console.log(orderSet);
 
-for (const day of properties) {
-  openStr += `${day}, `;
-}
-console.log(openStr);
+for (const order of orderSet) console.log(order);
 
-const values = Object.values(openingHours);
-console.log(values);
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
 
-const entries = Object.entries(openingHours);
-console.log(entries);
+const staffUnique = new Set(staff);
+console.log(staffUnique);
 
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+const staffUniqueArr = [...new Set(staff)];
+console.log(staffUniqueArr);
 
+console.log(
+  new Set(["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]).size
+);
+
+console.log(new Set("jonasschmedtmann").size);
