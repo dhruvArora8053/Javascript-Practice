@@ -49,44 +49,12 @@ const restaurant = {
   },
 };
 
-const rest1 = {
-  name: "Capri",
-  numGuests: 20,
-};
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-const rest2 = {
-  name: "La Piazza",
-  owner: "Gioanni Rossi",
-};
+for (const item of menu) {
+  console.log(item);
+}
 
-// rest1.numGuests = rest1.numGuests || 10;
-// rest2.numGuests = rest2.numGuests || 10;
-// console.log(rest1, rest2);
-
-rest1.numGuests ||= 10;
-rest2.numGuests ||= 10;
-console.log(rest1, rest2);
-
-const rest3 = {
-  name: "Capri",
-  numGuests: 0,
-};
-
-const rest4 = {
-  name: "La Piazza",
-  owner: "Gioanni Rossi",
-};
-
-rest3.numGuests ??= 10;
-rest4.numGuests ??= 10;
-console.log(rest3, rest4);
-
-// rest3.owner = rest3.owner && "anonymous";
-// rest4.owner = rest4.owner && "anonymous";
-// console.log(rest3);
-// console.log(rest4);
-
-rest3.owner &&= "anonymous";
-rest4.owner &&= "anonymous";
-console.log(rest3);
-console.log(rest4);
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
