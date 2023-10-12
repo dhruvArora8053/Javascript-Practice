@@ -4,20 +4,15 @@
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const currencies = new Map([
-  ["USD", "United States Dollar"],
-  ["EUR", "Euro"],
-  ["GBP", "Pound Sterling"],
-]);
-console.log(currencies);
+const eurToUsd = 1.1;
+const movementsUSD = movements.map((mov) => mov * eurToUsd);
+console.log(movements);
+console.log(movementsUSD);
 
-currencies.forEach((val, key, map) => {
-  console.log(`${key}: ${val}`);
-});
-
-const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
-console.log(currenciesUnique);
-
-currenciesUnique.forEach((val, key, set) => {
-  console.log(`${key}: ${val}`);
-});
+const movementsDescirption = movements.map(
+  (mov, i, arr) =>
+    `Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescirption);
