@@ -1,82 +1,35 @@
 "use strict";
 
-const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const airline = "TAP Air Portugal";
+const plane = "A320";
 
-const openingHours = {
-  [weekDays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  [weekDays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  [weekDays[5]]: {
-    open: 0,
-    close: 24,
-  },
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log(plane[3]);
+console.log("B737"[0]);
+console.log(airline.length);
+console.log("B737".length);
+console.log(airline.indexOf("r"));
+console.log(airline.indexOf("Portugal"));
+console.log(airline.indexOf("portugal"));
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const chekMiddleSeat = function (seat) {
+  const lastWord = seat.slice(-1);
+  if (lastWord === "A") console.log("first seat");
+  else if (lastWord === "B") console.log("middle seat");
+  else if (lastWord === "C") console.log("last seat");
+  else console.log("wrong input");
 };
 
-const restaurant = {
-  name: "Classico Italino",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Foccacia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
+chekMiddleSeat("11C");
 
-  openingHours,
-
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = "20:00",
-    address,
-  }) {
-    console.log(
-      `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-    );
-  },
-
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
-
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-};
-
-const question = new Map([
-  ["question", "What is the best programming language in the world"],
-  [1, "C"],
-  [2, "Java"],
-  [3, "Javascript"],
-  ["correct", 3],
-  [true, "Correct"],
-  [false, "Try Again"],
-]);
-console.log(question);
-console.log(Object.entries(openingHours));
-
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
-
-console.log(question.get("question"));
-
-for (const [key, value] of question) {
-  if (typeof key === "number") {
-    console.log(`Answer ${key}: ${value}`);
-  }
-}
-
-console.log([...question]);
-console.log(question.entries());
-console.log(question.keys());
-console.log(question.values());
+console.log(new String("jonas"));
+console.log(typeof new String("jonas"));
+console.log(typeof new String("jonas").slice(1));
