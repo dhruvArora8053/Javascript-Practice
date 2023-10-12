@@ -1,45 +1,56 @@
 "use strict";
 
-let lastName = "Williams";
-let oldLastName = lastName;
-lastName = "Davis";
-console.log(lastName, oldLastName);
+const restaurant = {
+  name: "Classico Italino",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Foccacia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-const jessica = {
-  firstName: "Jessica",
-  lastName: "Williams",
-  age: 27,
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 };
 
-const marriedJessica = jessica;
-marriedJessica.lastName = "Davis";
-console.log("Before Marriage:", jessica);
-console.log("After Marriage:", marriedJessica);
+const arr = [2, 3, 4];
+const [x, y, z] = arr;
+console.log(x, y, z);
 
-// marriedJessica = {};
+const [first, second] = restaurant.categories;
+console.log(first, second);
+const [first1, , second1] = restaurant.categories;
+console.log(first1, second1);
 
-const jessica1 = {
-  firstName: "Jessica",
-  lastName: "Williams",
-  age: 27,
-};
+let [main, secondary] = restaurant.categories;
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
 
-const jessicaCopy = Object.assign({}, jessica1);
-jessicaCopy.lastName = "Davis";
-console.log(jessica1);
-console.log(jessicaCopy);
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
 
-const jessica2 = {
-  firstName: "Jessica",
-  lastName: "Williams",
-  age: 27,
-  family: ["Alice", "Bob"],
-};
+const nested = [2, 4, [5, 6]];
+const [i, , j] = nested;
+console.log(i, j);
 
-const jessicaCopy2 = Object.assign({}, jessica2);
-jessicaCopy2.lastName = "Davis";
-jessicaCopy2.family.push("Mary");
-jessicaCopy2.family.push("John");
+const [p, , [q, r]] = nested;
+console.log(p, q, r);
+const [d, e, f] = [8, 9];
+console.log(d, e, f);
 
-console.log("Before Marriage", jessica2);
-console.log("After Marriage", jessicaCopy2);
+const [g = 1, h = 1, k = 1] = [8, 9];
+console.log(g, h, k);
