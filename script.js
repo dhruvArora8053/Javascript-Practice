@@ -49,19 +49,9 @@ const restaurant = {
   },
 };
 
-console.log(3 || "Jonas");
-console.log("" || "Jonas");
-console.log(true || 0);
-
-restaurant.numGuests = 23;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
-
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2);
-
 restaurant.numGuests = 0;
-const guests3 = restaurant.numGuests || 10;
-console.log(guests3);
+const guests = restaurant.numGuests || 10;
+console.log(guests);
 
-restaurant.orderPizza && restaurant.orderPizza("mushroom", "spinach");
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
