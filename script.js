@@ -1,35 +1,58 @@
 "use strict";
 
 const airline = "TAP Air Portugal";
-const plane = "A320";
 
-console.log(plane[0]);
-console.log(plane[1]);
-console.log(plane[2]);
-console.log(plane[3]);
-console.log("B737"[0]);
-console.log(airline.length);
-console.log("B737".length);
-console.log(airline.indexOf("r"));
-console.log(airline.indexOf("Portugal"));
-console.log(airline.indexOf("portugal"));
-console.log(airline.slice(4));
-console.log(airline.slice(4, 7));
-console.log(airline.slice(0, airline.indexOf(" ")));
-console.log(airline.slice(airline.lastIndexOf(" ") + 1));
-console.log(airline.slice(-2));
-console.log(airline.slice(1, -1));
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+console.log("jonas".toUpperCase());
 
-const chekMiddleSeat = function (seat) {
-  const lastWord = seat.slice(-1);
-  if (lastWord === "A") console.log("first seat");
-  else if (lastWord === "B") console.log("middle seat");
-  else if (lastWord === "C") console.log("last seat");
-  else console.log("wrong input");
+const passenger = "jOnAs";
+const passengerLower = passenger.toLowerCase();
+
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const email = "hello@jonas.io";
+const loginEmail = "   Hello@Jonas.Io \n";
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+
+const normalisedEmail = loginEmail.toLowerCase().trim();
+console.log(normalisedEmail);
+console.log(email === normalisedEmail);
+
+const priceGB = "288,96€";
+const priceUS = priceGB.replace("€", "$").replace(",", ".");
+console.log(priceUS);
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23!";
+
+console.log(announcement.replace("door", "gate"));
+console.log(announcement.replaceAll("door", "gate"));
+
+const plane = "Airbus A320neo";
+
+console.log(plane.includes("A320"));
+console.log(plane.includes("Boeing"));
+console.log(plane.includes("Air"));
+console.log(plane.includes("Airb"));
+
+if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+  console.log("Part of the new Airbus family");
+}
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are not allowed on board");
+  } else console.log("Welcome Aboard");
 };
 
-chekMiddleSeat("11C");
-
-console.log(new String("jonas"));
-console.log(typeof new String("jonas"));
-console.log(typeof new String("jonas").slice(1));
+checkBaggage("I have a laptop, some Food and a pocked Knife");
+checkBaggage("Socks and Camera");
+checkBaggage("Got some snacks and a gun for protection");
