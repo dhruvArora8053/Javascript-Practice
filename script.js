@@ -3,16 +3,39 @@
 //1. String method Practice
 //2. setters and getters
 
-const secureBooking = function () {
-  let passengerCount = 0;
+let f;
 
-  return function () {
-    passengerCount++;
-    console.log(`${passengerCount} passengers`);
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
   };
 };
 
-const booker = secureBooking();
-booker();
-booker();
-console.dir(booker);
+g();
+f();
+
+const h = function () {
+  const b = 4;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+h();
+f();
+
+const boardPassengers = function (passangers, wait) {
+//   const perGroup = passangers / 3;
+
+  setTimeout(() => {
+    console.log(`We are now boarding all ${passangers} passengers`);
+    console.log(`There are 3 groups each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+// boardPassengers(180, 3);
+const perGroup = 1000;
+boardPassengers(180, 3);
