@@ -2,12 +2,22 @@
 //Left:-
 //1. String method Practice
 
-const future = new Date(2037, 10, 19, 15, 23);
-console.log(future);
-console.log(+future);
+const num = 3884764.23;
+console.log("US:   ", new Intl.NumberFormat("en-US").format(num));
+console.log("Germany:   ", new Intl.NumberFormat("de-DE").format(num));
+console.log("Syria:   ", new Intl.NumberFormat("ar-SY").format(num));
 
-const daysPassed = (date1, date2) =>
-  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language).format(num)
+);
 
-const days1 = daysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
-console.log(days1);
+const options = {
+  style: "currency",
+  unit: "mile-per-hour",
+  currency: "EUR",
+};
+
+console.log("US:   ", new Intl.NumberFormat("en-US", options).format(num));
+console.log("Germany:   ", new Intl.NumberFormat("de-DE", options).format(num));
+console.log("Syria:   ", new Intl.NumberFormat("ar-SY", options).format(num));
