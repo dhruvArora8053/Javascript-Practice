@@ -4,29 +4,31 @@
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+console.log(23 === 23.0);
+console.log(0.1 + 0.2);
+console.log(0.1 + 0.2 === 0.3);
 
-const x = new Array(7);
-console.log(x);
+console.log(Number("23"));
+console.log(+"23");
 
-console.log(x.map(() => 5));
+console.log(Number.parseInt("30px", 10));
+console.log(Number.parseInt("e23", 10));
+console.log(Number.parseInt("30px", 2));
 
-console.log(x.fill(1));
-const y = new Array(7);
-y.fill(1, 3, 5);
-console.log(y);
+console.log(Number.parseFloat("2.5rem"));
+console.log(Number.parseInt("2.5rem"));
+console.log(Number.parseFloat("   2.5 rem  "));
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-arr.fill(23, 4, 6);
-console.log(arr);
+console.log(Number.isNaN(20));
+console.log(Number.isNaN("20"));
+console.log(Number.isNaN(+"20X"));
+console.log(Number.isNaN(23 / 0));
 
-const z = Array.from({ length: 7 }, () => 1);
-console.log(z);
+console.log(Number.isFinite(20));
+console.log(Number.isFinite("20"));
+console.log(Number.isFinite(+"20x"));
+console.log(Number.isFinite(23 / 0));
 
-const a = Array.from({ length: 7 }, (cur, i) => i + 1);
-console.log(a);
-
-const diceRoll = Array.from({ length: 100 }, () =>
-  Math.trunc(Math.random() * 100 + 1)
-);
-console.log(diceRoll);
+console.log(Number.isInteger(23));
+console.log(Number.isInteger(23.0));
+console.log(Number.isInteger(23 / 0));
