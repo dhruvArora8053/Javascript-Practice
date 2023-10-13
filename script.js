@@ -3,27 +3,20 @@
 //1. String method Practice
 //2. setters and getters
 
-const flight = "LH234";
-const jonas = {
-  name: "Jonas Schmedtmann",
-  passport: 397389939338,
+const oneWord = function (str) {
+  return str.replace(/ /g, "").toLowerCase();
 };
 
-const checkIn = function (flightNum, passenger) {
-  flightNum = "LH999";
-  passenger.name = "Mr. " + passenger.name;
-
-  if (passenger.passport === 397389939338) console.log("Checked In");
-  else console.log("Wrong passport!");
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(" ");
+  return [first.toUpperCase(), ...others].join(" ");
 };
 
-checkIn(flight, jonas);
-console.log(flight);
-console.log(jonas);
-
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 100000000 + 1);
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
 };
 
-newPassport(jonas);
-checkIn(flight, jonas);
+transformer("Javascript is the best!", upperFirstWord);
+transformer("Javascript is the best!", oneWord);
