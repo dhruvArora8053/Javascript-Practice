@@ -11,11 +11,9 @@ const lufthansa = {
     console.log(
       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
     );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
   },
 };
-
-lufthansa.book(239, "Jonas Schmedtmann");
-lufthansa.book(635, "John Wick");
 
 const eurowings = {
   airline: "Eurowings",
@@ -23,18 +21,32 @@ const eurowings = {
   bookings: [],
 };
 
-const book = lufthansa.book;
-book.call(eurowings, 23, "Sarah Williams");
-console.log(eurowings);
-
-book.call(lufthansa, 239, "Mary Cooper");
-console.log(lufthansa);
-
 const swiss = {
-  airline: "Swiss Air Lines",
+  airline: "Swiss Air LInes",
   iataCode: "LX",
   bookings: [],
 };
 
-book.call(swiss, 583, "Tony Stark");
-console.log(swiss);
+const book = lufthansa.book;
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, "Steven Williams");
+console.log(eurowings);
+
+lufthansa.planes = 300;
+
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+lufthansa.buyPlane();
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(100));
+console.log(addVAT(23));
