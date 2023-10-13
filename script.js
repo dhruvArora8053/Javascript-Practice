@@ -4,15 +4,19 @@
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const solarDiameter = 287_460_000_000;
-console.log(solarDiameter);
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
 
-const priceCents = 345_99;
-console.log(priceCents);
+console.log(3452797345975349734597);
+console.log(5324797543973459745397435974539n);
+console.log(BigInt(99345793457));
 
-console.log(15_00);
-console.log(1_500);
+console.log(10000n + 10000n);
+console.log(94579754979473974359274593n * 100000000n);
 
-console.log(Number("230000"));
-console.log(Number("230_000"));
-console.log(Number.parseInt("230_000"));
+const huge = 3297429742397392479832n;
+const num = 23;
+// console.log(huge * num);
+
+console.log(huge * BigInt(num));
+console.log(huge + ' is really big');
