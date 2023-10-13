@@ -3,67 +3,27 @@
 //1. String method Practice
 //2. setters and getters
 
-// class PersonCl {
-//   constructor(firstName, birthYear) {
-//     this.firstName = firstName;
-//     this.birthYear = birthYear;
-//   }
-
-//   calcAge() {
-//     console.log(2037 - this.birthYear);
-//   }
-// }
-
-// const jessica = new PersonCl("Jessica", 1996);
-// console.log(jessica);
-// jessica.calcAge();
-
-// PersonCl.prototype.greet = function () {
-//   console.log(`Hey ${this.firstName}`);
-// };
-// jessica.greet();
-
-const account = {
-  owner: "jonas",
-  movements: [200, 530, 120, 300],
-
-  get latest() {
-    return this.movements.slice(-1).pop();
-  },
-
-  set latest(mov) {
-    this.movements.push(mov);
-  },
+const flight = "LH234";
+const jonas = {
+  name: "Jonas Schmedtmann",
+  passport: 397389939338,
 };
 
-console.log(account.latest);
-account.latest = 50;
-console.log(account.movements);
+const checkIn = function (flightNum, passenger) {
+  flightNum = "LH999";
+  passenger.name = "Mr. " + passenger.name;
 
-class PersonCl {
-  constructor(fullName, birthYear) {
-    this.fullName = fullName;
-    this.birthYear = birthYear;
-  }
+  if (passenger.passport === 397389939338) console.log("Checked In");
+  else console.log("Wrong passport!");
+};
 
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  }
+checkIn(flight, jonas);
+console.log(flight);
+console.log(jonas);
 
-  get age() {
-    return 2037 - this.birthYear;
-  }
+const newPassport = function (person) {
+  person.passport = Math.trunc(Math.random() * 100000000 + 1);
+};
 
-  set fullName(name) {
-    console.log(name);
-    if (name.includes(" ")) this._fullName = name;
-    else console.log(`${name} is not a full name!`);
-  }
-
-  get fullName() {
-    return this._fullName;
-  }
-}
-
-const jonas = new PersonCl("Jonas", "1991");
-const jessica = new PersonCl("Jessica Davis", 1996);
+newPassport(jonas);
+checkIn(flight, jonas);
