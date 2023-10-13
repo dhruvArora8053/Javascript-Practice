@@ -3,32 +3,30 @@
 //1. String method Practice
 //2. setters and getters
 
-const PersonProto = {
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  },
-
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
 };
 
-const steven = Object.create(PersonProto);
-console.log(steven);
-steven.name = "Steven";
-steven.birthYear = 2002;
-steven.calcAge();
-console.log(steven.__proto__);
-console.log(steven.__proto__ === PersonProto);
-
-const sarah = Object.create(PersonProto);
-
-sarah.init("Sarah", 1979);
-sarah.calcAge();
-console.log(sarah);
-sarah.greet = function () {
-  console.log(`hey ${this.firstName}`);
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
 };
 
-sarah.greet();
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student("Mike", 2020, "Computer Science");
+console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+console.dir(Student.prototype.constructor);
+Student.prototype.constructor= Student;
+console.dir(Student.prototype.constructor);
