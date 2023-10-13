@@ -4,13 +4,15 @@
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-console.log(5 % 2);
-console.log(5 / 2);
+const solarDiameter = 287_460_000_000;
+console.log(solarDiameter);
 
-console.log(8 % 3);
-console.log(8 / 3);
+const priceCents = 345_99;
+console.log(priceCents);
 
-const isEven = function (n) {
-  n % 2 === 0 ? console.log("even") : console.log("odd");
-};
-isEven(67);
+console.log(15_00);
+console.log(1_500);
+
+console.log(Number("230000"));
+console.log(Number("230_000"));
+console.log(Number.parseInt("230_000"));
