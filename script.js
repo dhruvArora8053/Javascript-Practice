@@ -3,39 +3,32 @@
 //1. String method Practice
 //2. setters and getters
 
-let f;
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
 
-const g = function () {
-  const a = 23;
-  f = function () {
-    console.log(a * 2);
-  };
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
 };
 
-g();
-f();
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = "Steven";
+steven.birthYear = 2002;
+steven.calcAge();
+console.log(steven.__proto__);
+console.log(steven.__proto__ === PersonProto);
 
-const h = function () {
-  const b = 4;
-  f = function () {
-    console.log(b * 2);
-  };
+const sarah = Object.create(PersonProto);
+
+sarah.init("Sarah", 1979);
+sarah.calcAge();
+console.log(sarah);
+sarah.greet = function () {
+  console.log(`hey ${this.firstName}`);
 };
 
-h();
-f();
-
-const boardPassengers = function (passangers, wait) {
-//   const perGroup = passangers / 3;
-
-  setTimeout(() => {
-    console.log(`We are now boarding all ${passangers} passengers`);
-    console.log(`There are 3 groups each with ${perGroup} passengers`);
-  }, wait * 1000);
-
-  console.log(`Will start boarding in ${wait} seconds`);
-};
-
-// boardPassengers(180, 3);
-const perGroup = 1000;
-boardPassengers(180, 3);
+sarah.greet();
