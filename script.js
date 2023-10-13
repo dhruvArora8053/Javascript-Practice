@@ -4,27 +4,29 @@
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const owners = ["Jonas", "Zach", "Adam", "Martha"];
-console.log(owners.sort());
-console.log(owners);
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
-console.log(movements);
-// console.log(movements.sort());
+const x = new Array(7);
+console.log(x);
 
-movements.sort((a, b) => {
-  if (a > b) return 1;
-  if (a < b) return -1;
-});
-console.log(movements);
+console.log(x.map(() => 5));
 
-movements.sort((a, b) => {
-  if (a > b) return -1;
-  if (a < b) return 1;
-});
-console.log(movements);
+console.log(x.fill(1));
+const y = new Array(7);
+y.fill(1, 3, 5);
+console.log(y);
 
-movements.sort((a, b) => a - b);
-console.log(movements);
+const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+arr.fill(23, 4, 6);
+console.log(arr);
 
-movements.sort((a, b) => b - a);
-console.log(movements);
+const z = Array.from({ length: 7 }, () => 1);
+console.log(z);
+
+const a = Array.from({ length: 7 }, (cur, i) => i + 1);
+console.log(a);
+
+const diceRoll = Array.from({ length: 100 }, () =>
+  Math.trunc(Math.random() * 100 + 1)
+);
+console.log(diceRoll);
