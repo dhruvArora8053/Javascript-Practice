@@ -1,32 +1,69 @@
 "use strict";
 //Left:-
 //1. String method Practice
+//2. setters and getters
 
-const Person0 = function (firstName, birthYear) {};
-new Person0("Jonas", 1991);
+// class PersonCl {
+//   constructor(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   }
 
-const Person = function (firstName, birthYear) {
-  //   console.log(this);
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   }
+// }
+
+// const jessica = new PersonCl("Jessica", 1996);
+// console.log(jessica);
+// jessica.calcAge();
+
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+// jessica.greet();
+
+const account = {
+  owner: "jonas",
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
 };
 
-const jonas = new Person("Jonas", 1991);
-console.log(jonas);
-console.log(jonas instanceof Person);
+console.log(account.latest);
+account.latest = 50;
+console.log(account.movements);
 
-Person.prototype.calcAge = function () {
-  console.log(2036 - this.birthYear);
-};
-console.log(Person.prototype);
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
 
-jonas.calcAge();
-console.log(jonas);
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
 
-console.log(jonas.__proto__);
-console.log(jonas.__proto__ === Person.prototype);
-console.log(Person.prototype.isPrototypeOf(jonas));
+  get age() {
+    return 2037 - this.birthYear;
+  }
 
-Person.prototype.species = "Homo Sapiens";
-console.log(jonas);
-console.log(jonas.species);
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(" ")) this._fullName = name;
+    else console.log(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+}
+
+const jonas = new PersonCl("Jonas", "1991");
+const jessica = new PersonCl("Jessica Davis", 1996);
