@@ -3,44 +3,32 @@
 //1. String method Practice
 //2. setters and getters
 
-class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  }
-
+const PersonProto = {
   calcAge() {
     console.log(2037 - this.birthYear);
-  }
-}
+  },
 
-class StudentCl extends PersonCl {
-  constructor(fullName, birthYear, course) {
-    super(fullName, birthYear);
-    this.course = course;
-  }
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
 
-  introduce() {
-    console.log(`My name is ${this.firstName} and I study ${this.course}`);
-  }
+const steven = Object.create(PersonProto);
+steven.init("Steven", 2012);
+console.log(steven);
+steven.calcAge();
 
-  calcAge() {
-    console.log(
-      `I'm ${
-        2037 - this.birthYear
-      } years old, but as a student I feel more like ${
-        2037 - this.birthYear + 10
-      }`
-    );
-  }
-}
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
 
-const martha = new StudentCl("Martha", 2012, "Computer Science");
-console.log(martha);
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
 
-class StudentCl1 extends PersonCl {}
-const martha1= new StudentCl1('Martha', 2012, 'Computer Science')
-console.log(martha1);
-
-martha.introduce();
-martha.calcAge();
+const jay = Object.create(StudentProto);
+jay.init("Jay", 2010, "Computer Science");
+console.log(jay);
