@@ -4,18 +4,20 @@
 //2. setters and getters
 
 class Account {
+  locale = navigator.language;
+  #movements = [21, 44, 56];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
 
-    this._pin = pin;
-    this._movements = [12, 16, 300];
-    this.locale = navigator.language;
+    this.#pin = pin;
     console.log(`Thanks for opeing an account, ${owner}`);
   }
 
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
@@ -26,18 +28,28 @@ class Account {
     this.deposit(-val);
   }
 
-  _approveLoan(val) {
+  #approveLoan(val) {
     return true;
   }
 
   requestLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
+  }
+
+  static helper() {
+    console.log("Helper");
   }
 }
 
 const acc1 = new Account("Jonas", "EUR", 1111);
 console.log(acc1);
+// console.log(acc1.getMovements());
+// console.log(acc1.#movements);
 console.log(acc1.getMovements());
+// console.log(acc1.#pin);
+// console.log(acc1.#approveLoan(100));
+
+Account.helper();
