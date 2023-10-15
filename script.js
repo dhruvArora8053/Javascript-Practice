@@ -49,27 +49,14 @@ const flights =
 // 🛑  Delayed Arrival HEL to FAO (12h05)
 //            Departure FAO to LIS (12h30)
 
-const request0 = new XMLHttpRequest();
-request0.open('GET', 'https://restcountries.com/v3.1/name/portugal');
-request0.send();
+console.log('Test Start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 1000; i++) {
+    console.log(res);
+  }
+});
+console.log('Test end');
 
-const getCountryData = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(res => {
-      console.log(res);
-      return res.json();
-    })
-    .then(data => {
-      console.log(data);
-      renderCountry(data[0]);
-      const neighbour = data[0].borders?.[0];
 
-      if (!neighbour) return;
-
-      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
-        .then(res => res.json())
-        .then(data => renderCountry(data[0], 'neighbour'));
-    });
-};
-
-getCountryData('portugal');
