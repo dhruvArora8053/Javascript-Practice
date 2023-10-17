@@ -49,3 +49,18 @@ const flights =
 // 🛑  Delayed Arrival HEL to FAO (12h05)
 //            Departure FAO to LIS (12h30)
 
+for (const flight of flights.split('+')) {
+  const firstThree = str => str.slice(0, 3).toUpperCase();
+
+  const [know, from, to, time] = flight.split(';');
+  const output = `${know.includes('Delayed') ? '🛑' : ''}${know.replaceAll(
+    '_',
+    ' '
+  )} ${firstThree(from)} to ${firstThree(to)} (${time.replaceAll(
+    ':',
+    'h'
+  )})`.padStart(39, ' ');
+
+  console.log(output);
+}
+// console.log(flights.split('+'));
