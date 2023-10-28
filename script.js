@@ -63,8 +63,10 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements) {
   movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
     const html = ` <div class="movements__row">
-    <div class="movements__type movements__type--deposit">${i + 1}</div>
+    <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
     <div class="movements__value">${mov}€</div>
   </div>`;
   });
@@ -85,3 +87,65 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
+    console.log(
+      `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+};
+
+const arr = [2, 3, 4];
+const [x, y, z] = arr;
+console.log(x, y, z);
+
+const [first, second] = restaurant.categories;
+console.log(first, second);
+
+const [first1, , second1] = restaurant.categories;
+console.log(first1, second1);
+
+let [main, secondary] = restaurant.categories;
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
+
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
+
+const nested = [2, 4, [5, 6]];
+const [i, j] = nested;
+console.log(i, j);
+
+const nested1 = [2, 4, [5, 6]];
+const [p, , [q, r]] = nested1;
+console.log(p, q, r);
