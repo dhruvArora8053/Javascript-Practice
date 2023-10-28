@@ -125,27 +125,39 @@ const restaurant = {
   },
 };
 
-const arr = [2, 3, 4];
-const [x, y, z] = arr;
-console.log(x, y, z);
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
 
-const [first, second] = restaurant.categories;
-console.log(first, second);
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
-const [first1, , second1] = restaurant.categories;
-console.log(first1, second1);
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
-let [main, secondary] = restaurant.categories;
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+// {a, b}= obj;
+({ a, b } = obj);
+console.log(a, b);
 
-const [starter, mainCourse] = restaurant.order(2, 0);
-console.log(starter, mainCourse);
+const {
+  fri: { open: o = 1, close: c = 1 },
+} = openingHours;
+console.log(o, c);
 
-const nested = [2, 4, [5, 6]];
-const [i, j] = nested;
-console.log(i, j);
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
-const nested1 = [2, 4, [5, 6]];
-const [p, , [q, r]] = nested1;
-console.log(p, q, r);
+restaurant.orderDelivery({
+  address: 'Via del Sole, 21',
+  starterIndex: 1,
+});
