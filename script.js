@@ -134,12 +134,23 @@ const restaurant = {
   },
 };
 
-console.log(3 || 'Jonas');
+const rest5 = {
+  name: 'Capri',
+  numGuests: 20,
+};
 
-restaurant.numGuests = 23;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
+const rest6 = {
+  name: 'La Piazza',
+  owner: 'Gioanni Rossi',
+};
 
-const guests2 = restaurant.numGuests || 10;
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+// console.log(rest1, rest2);
 
-restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+// rest5.owner = rest5.owner && 'anonymous';
+// rest6.owner = rest6.owner && ' anonymous';
+
+rest5.owner &&= 'anonymous';
+rest6.owner &&= 'anonymous';
+console.log(rest5, rest6);
