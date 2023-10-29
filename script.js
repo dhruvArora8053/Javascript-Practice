@@ -134,27 +134,12 @@ const restaurant = {
   },
 };
 
-const arr = [1, 2, ...[3, 4]];
-const [a, b, others] = [1, 2, 3, 4, 5];
+console.log(3 || 'Jonas');
 
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
 
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(sat, weekdays);
+const guests2 = restaurant.numGuests || 10;
 
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-  console.log(sum);
-};
-
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 2, 5, 3, 2, 1, 3);
-
-restaurant.orderPizza('mushroom', 'onion', 'olives', 'spinach');
+restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
