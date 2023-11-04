@@ -90,3 +90,34 @@ console.log(entries);
 for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
+
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manger', 'Chef', 'Waiter'];
+const staffUnique = new Set(staff);
+console.log(staffUnique);
+
+const staffUniqueArr = [...new Set(staff)];
+console.log(staffUniqueArr);
+
+console.log(new Set(['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter']).size);
+
+console.log(new Set('jonasschmedtmann'));
