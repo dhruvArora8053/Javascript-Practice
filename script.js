@@ -262,3 +262,48 @@ console.log(plane1.startsWith('Airb'));
 if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
   console.log('Part of the new Airbus family');
 }
+
+console.log('a+very+nice+string'.split('+'));
+
+console.log('Jonas Schemedtmann'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schemedtmann'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  let upper = '';
+  for (const word of name.split(' ')) {
+    upper += word.replace(word[0], word[0].toUpperCase()) + ' ';
+  }
+  console.log(upper);
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas schmedtmann');
+
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+'));
+console.log('Jonas'.padStart(25, '+'));
+console.log(message.padStart(25, '+').padEnd(35, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const output = str.slice(-4).padStart(str.length, '*');
+  console.log(output);
+};
+
+maskCreditCard(73923749237493427);
+maskCreditCard('734907324972349783');
+
+const message2 = 'Bad weather... All Departues Delayed... ';
+console.log(message2.repeat(5));
+
+const planeInLine = function (n) {
+  console.log(`Thier are ${'✈️'.repeat(n)} in line`);
+};
+
+planeInLine(5);
+planeInLine(3);
+planeInLine(10);
