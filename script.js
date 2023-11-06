@@ -1,66 +1,32 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
+let arr = ['a', 'b', 'c', 'd', 'e'];
 
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.btn--close-modal');
-const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -1));
+console.log(arr.slice(1, -2));
+console.log(arr.slice());
+console.log([...arr]);
 
-const openModal = function () {
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
-};
+arr.splice(-1);
+console.log(arr);
+console.log(arr.splice(1, 2));
+console.log(arr);
 
-const closeModal = function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
-};
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+console.log(arr2);
 
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', openModal);
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]);
 
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
+console.log(letters.join('-'));
 
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
-});
+let a = 10;
+console.log(a++);
 
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
-console.log(document.querySelector('.header'));
-
-const allSections = document.querySelectorAll('.section');
-console.log(allSections);
-console.log(document.getElementById('section--1'));
-
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
-
-console.log(document.getElementsByClassName('btn'));
-
-// .insertAdjacentHTML
-
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-message.innerHTML =
-  'We use cookies for improved functionality and analytics. <button class="btn btn-close--cookie">Got it!</button>';
-
-const header = document.querySelector('.header');
-header.prepend(message);
-// header.append(message);
-
-// header.prepend(message.cloneNode(true));
-
-// header.before(message);
-// header.after(message);
-
-
-
-////////////////////////////////////////////////
-message.style.
