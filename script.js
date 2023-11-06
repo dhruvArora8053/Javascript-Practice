@@ -1,12 +1,19 @@
 'use strict';
 
-const arr = [23, 11, 64];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-console.log(arr[0]);
-console.log(arr.at(0));
-console.log(arr[arr.length - 1]);
-console.log(arr.slice(-1)[0]);
-console.log(arr.at(-1));
-console.log(arr.at(-2));
-console.log('jonas'.at(0));
-console.log('jonas'.at(-1));
+const globalBalance = movements.reduce((acc, mov) => acc + mov, 0);
+console.log(globalBalance);
+
+const max = movements.reduce((acc, mov) => {
+  if (acc < mov) acc = mov;
+  return acc;
+}, movements[0]);
+console.log(max);
+
+const max1 = movements.reduce(
+  (acc, mov) => (acc < mov ? (acc = mov) : acc),
+  movements[0]
+);
+console.log(max1);
+
