@@ -11,9 +11,6 @@ const lufthansa = {
   },
 };
 
-lufthansa.book(239, 'Jonas Schmedtmann');
-lufthansa.book(635, 'John Wick');
-
 const eurwoings = {
   airline: 'Eurwoings',
   iataCode: 'EW',
@@ -21,20 +18,19 @@ const eurwoings = {
 };
 
 const book = lufthansa.book;
-book.call(eurwoings, 23, 'Sarah Williams');
-book.call(lufthansa, 239, 'Mary Cooper');
+const bookEW = book.bind(eurwoings);
+const bookLH = book.bind(lufthansa);
 
-const swiss = {
-  airline: 'Swiss Air Lines',
-  iataCode: 'LX',
-  bookings: [],
-};
+bookEW(23, 'Steven Williams');
+console.log(eurwoings);
 
-book.call(swiss, 583, 'Tony Stark');
-console.log(swiss);
+const bookEW23 = book.bind(eurwoings, 23);
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
 
-const flightData = [583, 'George Cooper'];
-book.apply(swiss, flightData);
-console.log(swiss);
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
 
-book.call(swiss, ...flightData);
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(100));
+
