@@ -1,51 +1,36 @@
 'use strict';
 
-console.log(me);
-// console.log(job);
-// console.log(year);
+console.log(this);
 
-var me = 'Jonas';
-let job = 'teacher';
-const year = 1991;
-
-console.log(addDecl(5, 5));
-// console.log(addExpr(5, 5));
-// console.log(addArrow(5, 5));
-
-function addDecl(a, b) {
-  return a + b;
-}
-
-const addExpr = function (a, b) {
-  return a + b;
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this);
 };
 
-const addArrow = (a, b) => a + b;
+calcAge(1991);
 
-// console.log(addExpr1(5, 5));
-// console.log(addArrow1(5, 5));
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
+calcAgeArrow(1980);
 
-var addExpr1 = function (a, b) {
-  return a + b;
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
 };
 
-var addArrow1 = (a, b) => a + b;
+jonas.calcAge();
 
-console.log(numProducts);
-if (!numProducts) deleteShoppingCart();
+const matilda = {
+  year: 2017,
+};
+matilda.calcAge = jonas.calcAge;
+console.log(matilda);
 
-var numProducts = 10;
-
-function deleteShoppingCart() {
-  console.log('All products deleted');
-}
-
-var x = 1;
-let y = 2;
-const z = 3;
-
-console.log(window);
-
-console.log(x === window.x);
-console.log(y === window.y);
-console.log(z === window.z);
+const f = jonas.calcAge;
+console.log(f);
+f();
