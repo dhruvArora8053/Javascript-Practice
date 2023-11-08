@@ -41,30 +41,13 @@ const account2 = {
   locale: 'en-US',
 };
 
-const now = new Date();
-console.log(now);
-
-console.log(new Date('Apr 07 2023 22:14:37'));
-console.log(new Date('December 24, 2015'));
-
-console.log(account1.movementsDates[0]);
-
-console.log(new Date(2037, 10, 19, 15, 23, 5));
-console.log(new Date(2037, 10, 31));
-console.log(new Date(2037, 10, 33));
-console.log(new Date(0));
-console.log(new Date(3 * 24 * 60 * 60 * 1000));
-const future = new Date(2037, 10, 19, 15, 23, 44);
+const future = new Date(2037, 10, 19, 15, 23);
 console.log(future);
-console.log(future.getFullYear(0));
-console.log(future.getDate());
-console.log(future.getMonth());
-console.log(future.getDay());
-console.log(future.getHours());
-console.log(future.getMinutes());
-console.log(future.getSeconds());
-console.log(future.getTime());
-console.log(new Date(2142237224000));
-console.log(Date.now());
-future.setFullYear(2040);
-console.log(future);
+console.log(+future);
+
+const daysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+
+const days1 = daysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
+console.log(days1);
+
