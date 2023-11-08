@@ -1,66 +1,40 @@
 'use strict';
 
-const jonas = {
-  firstName: 'Jonas',
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-  },
-
-  greet: () => console.log(`Hey ${this.firstName}`),
-};
-
-jonas.greet();
-
-var firstName = 'Matilda';
-
-const jonas1 = {
-  firstName: 'Jonas',
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-  },
-
-  greet: () => {
-    console.log(this);
-    console.log(this.firstName);
-    console.log(`Hey ${this.firstName}`);
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
   },
 };
 
-jonas1.greet();
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Wick');
 
-const jonas2 = {
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-
-    const self = this;
-    const isMillenial = function () {
-      // console.log(this);
-      console.log(self);
-      console.log(self.year >= 1981 && self.year <= 1996);
-    };
-
-    const isMillenial1 = () => {
-      console.log();
-    };
-    isMillenial();
-  },
+const eurwoings = {
+  airline: 'Eurwoings',
+  iataCode: 'EW',
+  bookings: [],
 };
 
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
+const book = lufthansa.book;
+book.call(eurwoings, 23, 'Sarah Williams');
+book.call(lufthansa, 239, 'Mary Cooper');
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
 };
 
-addExpr(2, 5);
+book.call(swiss, 583, 'Tony Stark');
+console.log(swiss);
 
-const addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
-};
-addArrow(2, 5, 8);
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.call(swiss, ...flightData);
