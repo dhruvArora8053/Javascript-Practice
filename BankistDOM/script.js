@@ -108,3 +108,26 @@ const h1 = document.querySelector('h1');
 h1.addEventListener('mouseenter', function (e) {
   console.log('Great you are reading the heading');
 });
+
+h1.onmouseenter = function (e) {
+  console.log('onmouseenter: Great you are reading the heading');
+};
+
+const alertH1 = function (e) {
+  console.log('Great you are reading the heading');
+};
+
+h1.removeEventListener('mouseenter', alertH1);
+
+// const h1 = document.querySelector('h1');
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'magenta';
+
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.backgroundColor = 'var(--gradient-secondary)';
