@@ -48,4 +48,68 @@ document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes
 const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+console.log(logo.className);
 
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+
+logo.alt = 'Beautiful minmalist logo';
+logo.setAttribute('company', 'Bankist');
+console.log(logo.getAttribute('company'));
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+console.log(logo.dataset.versionNumber);
+
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
+logo.classList.toggle('c', 'j');
+logo.classList.contains('c', 'j');
+
+// don't use this
+logo.className = 'jonas';
+
+const h1 = document.querySelector('h1');
+h1.addEventListener('mouseenter', function (e) {
+  console.log('Great you are reading the heading!');
+});
+
+// h1.onmouseenter = function (e) {
+//   console.log('Great you are reading the heading using onmouseenter');
+// };
+
+const alertH1 = function (e) {
+  console.log('Great you are reading the heading');
+};
+h1.removeEventListener('mouseenter', alertH1);
+
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'magenta';
+
+// Going upwards
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+
+h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+// Going sideways:
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
+});
