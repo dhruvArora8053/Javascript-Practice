@@ -35,3 +35,9 @@ tabsContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+// Menu Fade Animation:
+const nav = document.querySelector('.nav');
+nav.addEventListener('mouseover', function(e){
+  
+})
