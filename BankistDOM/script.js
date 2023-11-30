@@ -38,32 +38,7 @@ tabsContainer.addEventListener('click', function (e) {
 
 // Menu Fade Animation:
 const nav = document.querySelector('.nav');
-nav.addEventListener('mouseover', function (e) {});
-
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-    );
-    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name });
-  },
-};
-
-lufthansa.book(239, 'Jonas Schmedtmann');
-lufthansa.book(635, 'John Wick');
-console.log(lufthansa);
-
-const eurowings = {
-  airline: 'Eurwoings',
-  iataCode: 'EW',
-  bookings: [],
-};
-
-const book = lufthansa.book;
-
-book.call(eurowings, 23, 'Sarah Williams');
-book.call(lufthansa, 239, 'Mary Cooper');
-console.log(lufthansa);
+nav.addEventListener('mouseover', function (e) {
+  const link = e.target;
+  const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+});
