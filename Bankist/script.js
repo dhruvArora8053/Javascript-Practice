@@ -187,7 +187,7 @@ btnTransfer.addEventListener('click', function (e) {
     recieverAcc &&
     recieverAcc.username !== currentAccount.username
   ) {
-    // Doint the transfer
+    // Doing the transfer
     currentAccount.movements.push(-amount);
     recieverAcc.movements.push(amount);
 
@@ -197,4 +197,27 @@ btnTransfer.addEventListener('click', function (e) {
 
   inputTransferAmount.value = inputTransferTo.value = '';
   inputTransferAmount.blur();
+});
+
+// Close Account
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+
+    // Delete Account
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+
+    inputCloseUsername.value = inputClosePin.value = '';
+    inputClosePin.blur();
+  }
 });
